@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('home', ['products' => Product::all()]);
+        $products = Product::orderBy('created_at', 'desc')->paginate(4);
+        return view('home', ['products' => $products]);
     }
 
     public function show()
