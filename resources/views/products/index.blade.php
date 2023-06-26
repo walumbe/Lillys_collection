@@ -56,7 +56,7 @@
             </table>
 
             <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination justify-content-end">
                 <li class="page-item {{ $products->currentPage() === 1 ? 'disabled' : '' }}">
                 <a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
