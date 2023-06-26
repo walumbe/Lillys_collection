@@ -4,10 +4,13 @@
 
 <div class="container " >
    
-    <div class="card my-5" style="width: 60rem;">
+    <div class="card my-5" style="width: 60rem; margin-top:8rem">
         <div class="card-header">
             <h2>Your Cart Items</h2>
         </div>
+
+        @if(!empty($products))
+            
 
         @foreach($products as $product)
         <ul class="list-group list-group-flush">
@@ -38,7 +41,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="quantity">Quantity</label>
-                                    <input name ="quantity" type="number" value="{{$cartItem->quantity}}" required>
+                                    <input name ="quantity" type="number" value="" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-2">Update Quantity</button>
                                 
@@ -72,6 +75,13 @@
                 <button type="submit" class="btn btn-primary w-100">Proceed to checkout</button>  
         
         </div>
+        @else 
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">
+                <span><strong>No items in the cart!</strong></span>
+            </li>
+        </ul>
+        @endif
     </div>
 
 </div>

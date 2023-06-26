@@ -62,7 +62,12 @@
             </nav>
             <div>
                
-                    @include('flash-message')
+                    {{-- @include('flash-message') --}}
+                    @if(session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     @yield('content')
                 
             </div>

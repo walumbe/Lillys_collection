@@ -26,11 +26,15 @@ class CartItemController extends Controller
         }
       
         $cart= CartItem::where('user_id', $user_id)->first();
-        $product = Product::where('id', $cart->product_id)->first();
-        $cartItem = CartItem::where('product_id', $product->id)->first();
+        if(!empty($cart))
+        {
+            $product = Product::where('id', $cart->product_id)->first();
+            $cartItem = CartItem::where('product_id', $product->id)->first();
+        }
+        
 
 
-        return view('cart.index', ['products' => $products, 'total' => $total, 'cartItem' => $cartItem]);
+        return view('cart.index', ['products' => $products, 'total' => $total]);
     }
     public function addToCart(Request $request, Product $product)
     {
@@ -55,8 +59,10 @@ class CartItemController extends Controller
             $cart->product_id = $product->id;
             $cart->quantity = 1;
             $cart->price = $product->price;
-            $cart->save();
             session()->flash('message', 'Product added to cart!');
+            // dd(session('message'));
+            $cart->save();
+            
             return redirect('/');
         }
 
