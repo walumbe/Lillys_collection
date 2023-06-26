@@ -32,12 +32,12 @@
                             
                         </div>
 
-                        <?php $total += $product->price ?>
+                        <?php # $total += $product->price ?>
     
                     </div>
                     <div class="row">
                         <div class="row">
-                            <form method="POST" action="/update-quantity/{{$product->id}}">
+                            {{-- <form method="POST" action="/update-quantity/{{$product->id}}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="quantity">Quantity</label>
@@ -45,7 +45,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-2">Update Quantity</button>
                                 
-                            </form>
+                            </form> --}}
                             
                         </div>
                         
@@ -66,7 +66,7 @@
                 </div>
                 <div class="col">
                     
-                    KES {{$total}}
+                    KES Total
                 </div>
             </div>
         </li>

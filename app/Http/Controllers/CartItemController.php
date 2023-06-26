@@ -5,37 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\CartItem;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class CartItemController extends Controller
 {
-    public function index(Product $product)
-    {
-        if(!auth()->check()) 
-        {
-            return redirect('/login');
-        }
-        $user_id = auth()->user()->id;
-        $cartItems = CartItem::where('user_id', $user_id)->get();
-        $products = [];
-        $total = 0;
-        $quantity = 0;
-        foreach($cartItems as $cartItem)
-        {
-            $products[] = Product::where('id', $cartItem->product_id)->first();
-            $quantity = $cartItem->quantity;
-        }
-      
-        $cart= CartItem::where('user_id', $user_id)->first();
-        if(!empty($cart))
-        {
-            $product = Product::where('id', $cart->product_id)->first();
-            $cartItem = CartItem::where('product_id', $product->id)->first();
-        }
-        
-
-
-        return view('cart.index', ['products' => $products, 'total' => $total]);
-    }
     public function addToCart(Request $request, Product $product)
     {
         if(!auth()->check())
@@ -49,31 +23,49 @@ class CartItemController extends Controller
         ->first();
 
         if($cart) {
-            $cart->quantity += $request->post('quantity');
+            $cart->quantity++;
+            $cart->subtotal = $cart->quantity * $cart->price;
             $cart->save();
-            // return redirect('/')->with('success', "Quantity Incremented successfully!");
-            session()->flash('message', 'Quantity Incremented successfully!');
+            return back()->with('success', 'Quantity Incremented successfully!');
         }else {
             $cart = new CartItem();
             $cart->user_id = auth()->user()->id;
             $cart->product_id = $product->id;
             $cart->quantity = 1;
             $cart->price = $product->price;
-            session()->flash('message', 'Product added to cart!');
-            // dd(session('message'));
+            $cart->subtotal = $cart->price;
             $cart->save();
             
-            return redirect('/');
         }
-
-        // return redirect('/')->with('success', "Product added to cart!");
+        return back()->with('success', 'Product added to cart!');
+       
     }
+    public function index(Product $product)
+    {
+        if (!auth()->check()) {
+            return redirect('/login');
+        }
+    
+        $user_id = auth()->user()->id;
+        $cartItems = CartItem::where('user_id', $user_id)->get();
+        $products = null;
+    
+        foreach ($cartItems as $item) {
+            $products[] = Product::where('id', $item->product_id)->first();
+    
+        }
+    
+        return view('cart.index', ['products' => $products]);
+    }
+    
+ 
 
 
     public function updateQuantity(Request $request, Product $product)
     {
+        $user_id = auth()->user()->id;
         $cartItem = CartItem::where('product_id', $product->id)
-        ->where('user_id', auth()->user()->id)
+        ->where('user_id', $user_id)
         ->first();
         $cartItem->quantity = $request->input('quantity');
         $cartItem->save();
@@ -87,7 +79,7 @@ class CartItemController extends Controller
         $cartItem = CartItem::where('product_id', $product->id)->first();
         $cartItem->delete();
     
-        return redirect('/cart')->with('cartItem', $cartItem);
+        return redirect('/cart')->with('success', 'Cart Item deleted Successfully!');
     }
     
     

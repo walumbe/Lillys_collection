@@ -61,15 +61,8 @@
                 </div>
             </nav>
             <div>
-               
-                    {{-- @include('flash-message') --}}
-                    @if(session('message'))
-                        <div class="alert alert-success">
-                            {{ session('message') }}
-                        </div>
-                    @endif
-                    @yield('content')
-                
+                @include('flash-message')
+                @yield('content')
             </div>
             <!-- Footer-->
             <footer class="py-2 bg-primary fixed-bottom">
