@@ -23,9 +23,14 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group d-flex justify-space-between">
                 <button type="submit" class="btn btn-block create-account">Login</button>
+
             </div>
+
+            <span class="my-2">Don't have an account? Register </span><a href="/register">here</a>
+
+            
         </form>
        
     </div>

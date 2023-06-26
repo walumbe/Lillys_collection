@@ -1,10 +1,9 @@
 @extends('layout')
 @section('content')
 
-
         <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
+        {{-- <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5"> --}}
                 {{-- corousel --}}
 
                 {{-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -31,12 +30,12 @@
 
                 {{-- end corousel --}}
 
-                <div class="text-center text-white">
+                {{-- <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Shop in style</h1>
                     <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-            </div>
-        </header>
+                </div> --}}
+            {{-- </div>
+        </header> --}}
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
@@ -70,6 +69,7 @@
                                 <form method="POST" action="/cart/add/{{$product->id}}">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    
                                     <button class="btn btn-primary add-to-cart" data-product-id="{{$product->id}}">Add to cart</button>
                                 </form>
                 

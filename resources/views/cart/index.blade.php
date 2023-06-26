@@ -20,22 +20,32 @@
                             <h3>{{$product->product_name}}</h3>
                         </div>
     
-                        <div class="col mr-0">
+                        <div class="col ">
                             <span>KES {{$product->price}}</span>
+                            <form method="POST" action="/delete-cart-item/{{$product->id}}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                            </form>
+                            
                         </div>
 
                         <?php $total += $product->price ?>
     
                     </div>
                     <div class="row">
-                        <form method="POST" action="">
-                        
-                            <div class="form-group">
-                                <label for="quantity">Quantity</label>
-                                <input name ="quantity" type="number">
-                            </div>
+                        <div class="row">
+                            <form method="POST" action="/update-quantity/{{$product->id}}">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="quantity">Quantity</label>
+                                    <input name ="quantity" type="number" value="{{$cartItem->quantity}}" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-2">Update Quantity</button>
+                                
+                            </form>
                             
-                        </form>
+                        </div>
+                        
                     </div>
                 </div>
                 
@@ -43,7 +53,6 @@
                
             
         </li>
-      
         
         @endforeach
         <li class="list-group-item">
@@ -60,7 +69,8 @@
         </li>
         </ul>
         <div class="card-footer">
-        <button class="btn btn-primary w-100">Proceed to checkout</button>
+                <button type="submit" class="btn btn-primary w-100">Proceed to checkout</button>  
+        
         </div>
     </div>
 

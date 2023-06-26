@@ -43,6 +43,8 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-block create-account">Create Account</button>
             </div>
+
+            <span style="margin-top: 10px">Already have an account? Login <a href="/login">here.</a> </span>
         </form>
        
     </div>
