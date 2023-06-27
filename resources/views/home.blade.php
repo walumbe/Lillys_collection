@@ -4,31 +4,6 @@
         <!-- Header-->
         {{-- <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5"> --}}
-                {{-- corousel --}}
-
-                {{-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="object-fit: contain">
-                      <div class="carousel-item active">
-                        <img src="storage/images/98j0e0vpnKibdgp37xhDp2vCEiPIM5nU9LIgEZDv.jpg"  class="d-block w-100" alt="">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="storage/images/pcYYducbqCwHKyXnnNUg0Mp13PxavL5euhmUHnzV.png" class="d-block w-100" alt="">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="storage/images/gaSW4xcRNCtzLGb7DYg96ChLnjWZbBovMCYng2qo.jpg" class="d-block w-100" alt="">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div> --}}
-
-                {{-- end corousel --}}
 
                 {{-- <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Shop in style</h1>

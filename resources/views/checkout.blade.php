@@ -1,3 +1,4 @@
+
 @extends('layout')
 
 @section('content')
@@ -21,6 +22,13 @@
                     <div class="row d-flex align-items-center justify-content-between">
                         <div class="col">
                             <h3>{{$product->product_name}}</h3>
+                            @php
+                                $cartItem = \App\Models\CartItem::where('product_id', $product->id)
+                                ->where('user_id', auth()->user()->id)
+                                ->first();
+                            @endphp
+                            <p>Quantity: {{$cartItem->quantity}} pcs</p>
+                            
                         </div>
     
                         <div class="col ">
@@ -49,7 +57,7 @@
                 </div>
                 <div class="col">
                     
-                    KES Total
+                    KES {{$order->total_price}}
                 </div>
             </div>
         </li>

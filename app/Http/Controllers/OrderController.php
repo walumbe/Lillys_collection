@@ -10,7 +10,7 @@ use App\Models\Product;
 
 class OrderController extends Controller
 {
-    public function checkout()
+    public function checkout(Product $product)
     {
         $user_id = auth()->user()->id;
         $cartItems = CartItem::where('user_id', $user_id)->get();
@@ -25,7 +25,13 @@ class OrderController extends Controller
         $order->total_price = $totalSum->total_price;
         $order->save();
 
-        $customer_order = Order::where('user_id', $user_id)->get();
+        $customer_order = Order::where('user_id', $user_id)->first();
+
+        // echo "<pre>";
+        // var_dump($customer_order);
+        // echo "<pre>";
+
+        // exit;
 
         $user_id = auth()->user()->id;
         $products = null;
@@ -35,7 +41,9 @@ class OrderController extends Controller
     
         }
 
-        return view('checkout', ['products' => $products, 'order' => $customer_order] );
+        $cartItem = CartItem::where('product_id', $product->id)->where('user_id', $user_id)->first();
+
+        return view('checkout', ['products' => $products, 'order' => $customer_order, 'cartItem' => $cartItem] );
     }
 
 

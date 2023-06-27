@@ -21,7 +21,13 @@
                     <div class="row d-flex align-items-center justify-content-between">
                         <div class="col">
                             <h3>{{$product->product_name}}</h3>
-                        </div>
+                            @php
+                                $cartItem = \App\Models\CartItem::where('product_id', $product->id)
+                                ->where('user_id', auth()->user()->id)
+                                ->first();
+                            @endphp
+                            <p>Quantity: {{$cartItem->quantity}} pcs</p>
+                            </div>
     
                         <div class="col ">
                             <span>KES {{$product->price}}</span>
@@ -31,24 +37,7 @@
                             </form>
                             
                         </div>
-
-                        <?php # $total += $product->price ?>
     
-                    </div>
-                    <div class="row">
-                        <div class="row">
-                            {{-- <form method="POST" action="/update-quantity/{{$product->id}}">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input name ="quantity" type="number" value="" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-2">Update Quantity</button>
-                                
-                            </form> --}}
-                            
-                        </div>
-                        
                     </div>
                 </div>
                 
@@ -59,20 +48,13 @@
         
         @endforeach
         <li class="list-group-item">
-            <div class="row">
-                <div class="col">
-                    <strong>Total</strong>
-                    <p>Shipping and taxes calculated at checkout.</p>
-                </div>
-                <div class="col">
-                    
-                    KES Total
-                </div>
-            </div>
+            <span class="text-center">
+                <strong>Shipping and taxes calculated at checkout.</strong>
+            </span>
         </li>
         </ul>
         <div class="card-footer">
-                <a href="/cart/checkout" class="btn btn-primary w-100">Proceed to checkout</a>  
+                <a href="/checkout" class="btn btn-primary w-100">Proceed to checkout</a>  
         
         </div>
         @else 
