@@ -1,3 +1,4 @@
+
 @extends('layout')
 
 @section('content')
@@ -6,7 +7,7 @@
    
     <div class="card my-5" style="width: 60rem; margin-top:8rem">
         <div class="card-header">
-            <h2>Your Cart Items</h2>
+            <h2>Your Order</h2>
         </div>
 
         @if(!empty($products))
@@ -27,7 +28,8 @@
                                 ->first();
                             @endphp
                             <p>Quantity: {{$cartItem->quantity}} pcs</p>
-                            </div>
+                            
+                        </div>
     
                         <div class="col ">
                             <span>KES {{$product->price}}</span>
@@ -39,6 +41,7 @@
                         </div>
     
                     </div>
+                    
                 </div>
                 
             </div>
@@ -48,13 +51,23 @@
         
         @endforeach
         <li class="list-group-item">
-            <span class="text-center">
-                <strong>Shipping and taxes calculated at checkout.</strong>
-            </span>
+            <div class="row">
+                <div class="col">
+                    <strong>Total</strong>
+                </div>
+                <div class="col">
+                    
+                    KES {{$order->total_price}}
+                </div>
+            </div>
         </li>
         </ul>
         <div class="card-footer">
-                <a href="/checkout" class="btn btn-primary w-100">Proceed to checkout</a>  
+            <form method="" action="#">
+                @csrf
+                <button class="btn btn-primary w-100">Checkout</button>
+            </form>
+                  
         
         </div>
         @else 

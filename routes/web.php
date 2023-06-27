@@ -58,4 +58,12 @@ Route::get('/cart', [CartItemController::class, 'index']);
 Route::post('/update-quantity/{product}', [CartItemController::class, 'updateQuantity']);
 Route::post('/delete-cart-item/{product}', [CartItemController::class, 'deleteCartItem']);
 
+// checkout
+Route::get('/checkout', [OrderController::class, 'checkout']);
+
+// Orders
+Route::get('/orders', [OrderController::class, 'index']);
+
+Route::post('/orders/{order}', [OrderController::class, 'destroy']);
+
 
