@@ -6,7 +6,7 @@
    
     <div class="card my-5" style="width: 60rem; margin-top:8rem">
         <div class="card-header">
-            <h2>Your Cart Items</h2>
+            <h2>Your Order</h2>
         </div>
 
         @if(!empty($products))
@@ -31,25 +31,9 @@
                             </form>
                             
                         </div>
-
-                        <?php # $total += $product->price ?>
     
                     </div>
-                    <div class="row">
-                        <div class="row">
-                            {{-- <form method="POST" action="/update-quantity/{{$product->id}}">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input name ="quantity" type="number" value="" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-2">Update Quantity</button>
-                                
-                            </form> --}}
-                            
-                        </div>
-                        
-                    </div>
+                    
                 </div>
                 
             </div>
@@ -62,7 +46,6 @@
             <div class="row">
                 <div class="col">
                     <strong>Total</strong>
-                    <p>Shipping and taxes calculated at checkout.</p>
                 </div>
                 <div class="col">
                     
@@ -72,7 +55,11 @@
         </li>
         </ul>
         <div class="card-footer">
-                <a href="/cart/checkout" class="btn btn-primary w-100">Proceed to checkout</a>  
+            <form method="" action="#">
+                @csrf
+                <button class="btn btn-primary w-100">Checkout</button>
+            </form>
+                  
         
         </div>
         @else 
