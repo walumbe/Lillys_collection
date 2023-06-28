@@ -26,6 +26,7 @@ use App\Models\User;
                         <th>Customer Name</th>
                         <th>Status</th>
                         <th>Amount</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -37,11 +38,12 @@ use App\Models\User;
                             <td><?= $user->name ?></td>
                             <td>{{ $order->status }}</td>
                             <td>{{ $order->total_price }}</td>
+                            <td>{{ $order->created_at }}</td>
                             <td>
                                 <div class="justify-space-between">
-                                    <a href=""><i class="fa fa-edit text-primary"></i></a>
+                                    {{-- <a href=""><i class="fa fa-edit text-primary"></i></a> --}}
 
-                                    <form method="POST" action="">
+                                    <form method="" action="/orders/{{$order->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="border: none; background-color: transparent;">
