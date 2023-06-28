@@ -24,7 +24,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [UserController::class, 'index']);
 
 Route::get('admin', [AdminController::class, 'index']);
-Route::get('/products', [ProductController::class, 'index'])->auth();
+Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
