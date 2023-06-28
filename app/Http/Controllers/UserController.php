@@ -13,6 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $products = Product::orderBy('created_at', 'desc')->paginate(4);
+
         return view('home', ['products' => $products]);
     }
 
