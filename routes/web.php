@@ -18,13 +18,13 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', function() {
-    return redirect('/');
-});
+// Route::get('/home', function() {
+//     return redirect('/');
+// });
 Route::get('/', [UserController::class, 'index']);
 
 Route::get('admin', [AdminController::class, 'index']);
-Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index'])->auth();
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
@@ -49,7 +49,7 @@ Route::delete('/products/{product}', [ProductController::class, 'delete']);
 
 Route::get('/endusers',[UserController::class, 'show']);
 Route::get('/customers', [CustomerController::class, 'index']);
-Route::get('/orders', [OrderController::class, 'index']);
+Route::get('/orders', [OrderController::class, 'index'])->middleware('auth');
 
 // cart items
 Route::post('/cart/add/{product}', [CartItemController::class, 'addToCart']);

@@ -10,6 +10,11 @@ class ProductController extends Controller
 {
     public function index()
     {
+        if(!auth()->check())
+        {
+
+            return redirect('/login')->with('error', 'You do not have permission to access this page!');
+        }
         $products = Product::orderBy('created_at', 'desc')->paginate(6);
         return view("products.index", ['products' => $products]);
     }
