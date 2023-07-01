@@ -28,6 +28,7 @@
                             @guest
                                 <li class="nav-item"><a class="nav-link text-white" href="/register">Register</a></li>
                                 <li class="nav-item"><a class="nav-link text-white" href="/login       ">Login</a></li>
+                                <li class="nav-item"><a class="nav-link text-white" href="/register">reset password</a></li>
                             @endguest
                             
                             

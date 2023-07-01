@@ -16,6 +16,7 @@
                     <p class="text-red-500 text-xs mt-1" style="color: red">{{$message}}</p>
                 @enderror
             </div>
+            <span class="my-2">forgot password? reset password </span><a href="/reset password">here</a>
             <div class="form-group">
                 <input type="password" name ="password" class="form-control item" id="password" placeholder="Password">
                 @error('password')
@@ -28,7 +29,8 @@
 
             </div>
 
-            <span class="my-2">Don't have an account? Register </span><a href="/register">here</a>
+            <span class="my-2">Don't have an account? Register </span><a href="/register">here</a><br>
+            
 
             
         </form>

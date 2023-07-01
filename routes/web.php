@@ -38,8 +38,8 @@ Route::get('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
-
-
+Route::get('/password/reset', 'App\Http\Controllers\PasswordResetController@showResetForm');
+Route::post('/password/update', 'App\Http\Controllers\PasswordResetController@update');
 // display add product form
 Route::get('/create-product', [ProductController::class, 'create']);
 Route::post('/store-product', [ProductController::class, 'store']);
