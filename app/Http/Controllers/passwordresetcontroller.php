@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\models\user;
+use illuminate\support\Facades\Hash;
 
 class passwordresetcontroller extends Controller
 {
