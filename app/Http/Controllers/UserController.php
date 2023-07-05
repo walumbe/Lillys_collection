@@ -34,7 +34,7 @@ class UserController extends Controller
         $formFields = $request->validate([
             'name' =>['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'phone' => 'required',
+            'phone' => ['required', 'min:12', 'max:12'],
             'password' => 'required|confirmed|min:6'
         ]);
 
@@ -45,7 +45,7 @@ class UserController extends Controller
         // login user
         auth()->login($user);
 
-        return redirect('/')->with('message','User created and logged in!' );
+        return redirect('/')->with('success','User created and logged in!' );
         
     }
 
@@ -72,7 +72,7 @@ class UserController extends Controller
                 return redirect('/admin');
             }
 
-            return redirect('/')->with('message', 'You have been logged in!');
+            return redirect('/')->with('success', 'Welcome to Lillys Collection!!🎉');
         }
 
        return back()->withErors(['email' => 'Invalid Credentials'])->onlyInput('email');

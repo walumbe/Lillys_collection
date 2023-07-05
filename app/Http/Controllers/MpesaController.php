@@ -45,10 +45,7 @@ class MpesaController extends Controller
             $Remarks
         );
 
-        
-
         $payment_details = json_decode($stkPushSimulation, true);
-
         $payment = new Payment();
         $payment->user_id = $user_id;
         $payment->checkout_request_id = $payment_details['CheckoutRequestID'];

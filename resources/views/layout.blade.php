@@ -75,34 +75,38 @@
             <!-- Core theme JS-->
             <script src="./js/scripts.js"></script>
             <script>
-                // Example using jQuery for AJAX request
-                $(document).ready(function() {
-                    $('.add-to-cart').click(function(e) {
-                        e.preventDefault();
+                // // Example using jQuery for AJAX request
+                // $(document).ready(function() {
+                //     $('.add-to-cart').click(function(e) {
+                //         e.preventDefault();
             
-                        var productId = $(this).data('product-id');
+                //         var productId = $(this).data('product-id');
             
-                        // Send an AJAX request to addToCart route
-                        $.ajax({
-                            url: '/cart/add/' + productId,
-                            method: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                            success: function(response) {
-                                // Update the cart count on the page
-                                // var currentCount = initialCartCount + response;
-                            $('.cart-count').text(currentCount);
-                                var currentCount = parseInt($('.cart-count').text());
-                                var newCount = currentCount + 1;
-                                $('.cart-count').text(newCount);
-                            },
-                            error: function() {
-                                console.log("An error occurred");
-                            }
-                        });
-                    });
-                });
+                //         // Send an AJAX request to addToCart route
+                //         $.ajax({
+                //             url: '/cart/add/' + productId,
+                //             method: 'POST',
+                //             headers: {
+                //                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                //             },
+                //             success: function(response) {
+                //                 // Update the cart count on the page
+                //                 var currentCount = parseInt($('.cart-count').text());
+                //                 var newCount = currentCount + 1;
+                //                 $('.cart-count').text(newCount);
+
+                //                 var successMessage = response.success;
+                //                 if (successMessage) {
+                //                     $('#success-alert').find('strong').text(successMessage);
+                //                     $('#success-alert').fadeIn('slow').delay(3000).fadeOut('slow');
+                //                 }
+                //             },
+                //             error: function() {
+                //                 console.log("An error occurred");
+                //             }
+                //         });
+                //     });
+                // });
             </script>
 </body>
 </html>
