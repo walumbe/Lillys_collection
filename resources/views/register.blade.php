@@ -22,7 +22,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <input type="text" name = "phone" class="form-control item" id="phone-number" placeholder="Phone Number" value="{{old('phone')}}">
+                <input type="text" name = "phone" class="form-control item" id="phone-number" placeholder="2547XXXXXXXX" value="{{old('phone')}}">
                 @error('phone')
                     <p class="" style="color: red">{{$message}}</p>
                 @enderror

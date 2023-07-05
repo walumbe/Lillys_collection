@@ -20,6 +20,7 @@ class OrderController extends Controller
         $order->products = json_encode($cartItems);
         $totalSum = DB::table('cart_items')
             ->selectRaw('SUM(subtotal) AS total_price')
+            ->where('user_id', $user_id)
             ->first();
 
         $order->total_price = $totalSum->total_price;
@@ -27,13 +28,6 @@ class OrderController extends Controller
 
         $customer_order = Order::where('user_id', $user_id)->first();
 
-        // echo "<pre>";
-        // var_dump($customer_order);
-        // echo "<pre>";
-
-        // exit;
-
-        $user_id = auth()->user()->id;
         $products = null;
     
         foreach ($cartItems as $item) {
@@ -59,4 +53,6 @@ class OrderController extends Controller
 
         return redirect('/orders')->with('success', 'Order deleted successfully!');
     }
+
+
 }

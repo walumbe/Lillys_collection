@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->string('phone_number');
-            $table->float('amount');
-            $table->float('status');
-            $table->string('transaction_id')->nullable();
+            $table->uuid('id')->primary();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('checkout_request_id');
+            $table->string('receipt')->nullable();
+            $table->string('amount')->nullable();
             $table->timestamps();
         });
     }
