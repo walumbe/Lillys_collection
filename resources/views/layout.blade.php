@@ -15,6 +15,7 @@
         <link href="./css/styles.css" rel="stylesheet" />
     </head>
     <body>
+    
                 <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white fixed-top">
                 <div class="container px-4 px-lg-5">
@@ -28,8 +29,9 @@
                             @guest
                                 <li class="nav-item"><a class="nav-link text-white" href="/register">Register</a></li>
                                 <li class="nav-item"><a class="nav-link text-white" href="/login       ">Login</a></li>
-                                <li class="nav-item"><a class="nav-link text-white" href="/register">reset password</a></li>
-                            @endguest
+
+                                
+                                @endguest
                             
                             
                         </ul>
@@ -61,6 +63,7 @@
                     </div>
                 </div>
             </nav>
+            
             <div>
                 @include('flash-message')
                 @yield('content')
