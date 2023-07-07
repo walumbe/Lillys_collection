@@ -11,7 +11,7 @@
             
            
             <div class="form-group">
-                <input type="text" name="email" class="form-control item" id="email" placeholder="Email">
+                <input type="text" name="email" class="form-control item" id="email" placeholder="Email" value="{{old('email')}}">
                 @error('email')
                     <p class="text-red-500 text-xs mt-1" style="color: red">{{$message}}</p>
                 @enderror

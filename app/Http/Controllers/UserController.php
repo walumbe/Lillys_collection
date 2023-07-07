@@ -73,9 +73,12 @@ class UserController extends Controller
             }
 
             return redirect('/')->with('success', 'Welcome to Lillys Collection!!🎉');
+        }else {
+            return redirect('/login')->with('error', 'Invalid Login creentials!')
+            ->withErors(['email' => 'Invalid Credentials'])->onlyInput('email');;
         }
 
-       return back()->withErors(['email' => 'Invalid Credentials'])->onlyInput('email');
+    //    return back()->
 
     }
 
@@ -86,6 +89,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', "You have been logged out!");
+        return redirect('/')->with('success', "You have been logged out!");
     }
 }
