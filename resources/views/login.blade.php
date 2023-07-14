@@ -28,8 +28,8 @@
 
             </div>
 
-            <span class="my-2">Don't have an account? Register </span><a href="/register">here</a>
-
+            <span class="my-2">Don't have an account? Register </span><a href="/register">here</a><br>
+            <span style=""><a href="/forgot-password">Forgot Password?</a></span>
             
         </form>
        
