@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\MpesaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\passwordresetcontroller;
 use App\Http\Controllers\ProductController;
@@ -30,6 +31,10 @@ Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+Route::get('/forgot-password', [UserController::class, 'forgotPassword']);
+Route::post('/reset-password', [UserController::class, 'resetPassword']);
+Route::get('/reset-password/{token}', [UserController::class, 'showResetPasswordForm']);
+Route::post('/submit-reset-password', [UserController::class, 'submitResetPasswordForm']);
 
 // Route::prefix('/admin')->group(function(){
     // Admin view
@@ -67,5 +72,7 @@ Route::get('/checkout', [OrderController::class, 'checkout']);
 Route::get('/orders', [OrderController::class, 'index']);
 
 Route::post('/orders/{order}', [OrderController::class, 'destroy']);
+
+Route::post('/pay',[MpesaController::class, 'stk']);
 
 

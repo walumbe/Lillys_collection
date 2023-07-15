@@ -11,7 +11,7 @@
             
            
             <div class="form-group">
-                <input type="text" name="email" class="form-control item" id="email" placeholder="Email">
+                <input type="text" name="email" class="form-control item" id="email" placeholder="Email" value="{{old('email')}}">
                 @error('email')
                     <p class="text-red-500 text-xs mt-1" style="color: red">{{$message}}</p>
                 @enderror
@@ -30,8 +30,12 @@
             </div>
 
             <span class="my-2">Don't have an account? Register </span><a href="/register">here</a><br>
+<<<<<<< HEAD
             
 
+=======
+            <span style=""><a href="/forgot-password">Forgot Password?</a></span>
+>>>>>>> 279e8cb2b04a0d287ca706f5e5e3249f490cbee5
             
         </form>
        

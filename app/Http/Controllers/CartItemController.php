@@ -26,7 +26,7 @@ class CartItemController extends Controller
             $cart->quantity++;
             $cart->subtotal = $cart->quantity * $cart->price;
             $cart->save();
-            return back()->with('success', 'Quantity Incremented successfully!');
+            // return redirect('/')->with('success', 'Quantity Incremented successfully!');
         }else {
             $cart = new CartItem();
             $cart->user_id = auth()->user()->id;
@@ -37,7 +37,7 @@ class CartItemController extends Controller
             $cart->save();
             
         }
-        return back()->with('success', 'Product added to cart!');
+        return redirect('/')->with('success', 'Product added to cart!');
        
     }
     public function index(Product $product)

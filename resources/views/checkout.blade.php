@@ -63,11 +63,10 @@
         </li>
         </ul>
         <div class="card-footer">
-            <form method="" action="#">
+            <form method="POST" action="/pay">
                 @csrf
-                <button class="btn btn-primary w-100">Checkout</button>
+                <button type="submit" class="btn btn-primary w-100">Checkout</button>
             </form>
-                  
         
         </div>
         @else 
